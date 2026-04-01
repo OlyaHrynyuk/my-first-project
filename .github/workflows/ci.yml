@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate HTML
+        run: |
+          echo "Перевірка HTML"
+          htmlhint index.html
+
+      - name: Validate CSS
+        run: |
+          echo "Перевірка CSS"
+          stylelint styles.css
